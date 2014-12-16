@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from main import TornadoApp
+from app.main import TornadoApp
 from tornado.testing import AsyncHTTPTestCase, gen_test
 
 
