@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+.clearfix:after {
+	visibility: hidden;
+	content: "";
+	display: block;
+	clear: both;
+	font-size: 0;
+	height: 0;
+}
