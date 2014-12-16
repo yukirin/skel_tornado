@@ -55,3 +55,4 @@ target/
 
 #bower
 /bower_components
+/npm-debug.log
