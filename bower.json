@@ -1,0 +1,26 @@
+{
+  "name": "skel_tornado",
+  "version": "0.0.1",
+  "homepage": "https://github.com/yukirin/skel_tornado",
+  "authors": [
+    "yukirin <standupdown@gmail.com>"
+  ],
+  "description": "tornado app",
+  "keywords": [
+    "tornado"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "knockoutjs": "~3.2.0",
+    "materialize": "~0.92.1"
+  }
+}
