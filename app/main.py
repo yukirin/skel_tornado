@@ -12,15 +12,25 @@ from tornado.escape import to_unicode
 
 
 class TornadoApp(tornado.web.Application):
-    def __init__(self):
+    def __init__(self, env):
+        debug = True
+        traceback = True
+
+        if env != 'development':
+            env = 'production'
+            debug = False
+            traceback = False
+
+        template_path = str(pathlib.Path(__file__).parent.resolve() / env / 'template')
+        static_path = str(pathlib.Path(__file__).parent.resolve() / env / 'static')
+
         settings = {
-            'template_path': str(pathlib.Path(__file__).parent.resolve() / 'template'),
-            'static_path': str(pathlib.Path(__file__).parent.resolve() / 'static'),
+            'template_path': template_path,
+            'static_path': static_path,
             'cookie_secret': to_unicode(binascii.hexlify(os.urandom(64))),
             'xsrf_cookies': True,
-            # debug option
-            'debug': True,
-            'serve_traceback': True,
+            'debug': debug,
+            'serve_traceback': traceback
         }
 
         handlers = [
@@ -39,5 +49,6 @@ class MainHandler(tornado.web.RequestHandler):
         super().render(*args, **kwargs)
 
 if __name__ == '__main__':
-    TornadoApp().listen(int(os.environ['PORT']))
+    env = os.environ['TORNADO_ENV']
+    TornadoApp(env).listen(int(os.environ['PORT']))
     tornado.ioloop.IOLoop.instance().start()
