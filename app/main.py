@@ -9,6 +9,7 @@ import tornado.ioloop
 import tornado.web
 from tornado import gen
 from tornado.escape import to_unicode
+from tornado.options import parse_command_line
 
 
 class TornadoApp(tornado.web.Application):
@@ -49,6 +50,7 @@ class MainHandler(tornado.web.RequestHandler):
         super().render(*args, **kwargs)
 
 if __name__ == '__main__':
+    parse_command_line()
     env = os.environ['TORNADO_ENV']
     TornadoApp(env).listen(int(os.environ['PORT']))
     tornado.ioloop.IOLoop.instance().start()
