@@ -5,6 +5,15 @@ from tornado.web import RequestHandler
 
 
 class BaseHandler(RequestHandler):
+    def initialize(self):
+        pass
+
+    def prepare(self):
+        pass
+
+    def on_finish(self):
+        pass
+
     def set_cookie(*args, **kwargs):
         return super().set_cookie(*args, secure=True, httponly=True, **kwargs)
 
