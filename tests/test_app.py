@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
 import os
+import pathlib
 from test.support import EnvironmentVarGuard
+
+sys.path[0:0] = [str(pathlib.Path(__file__).parent.resolve() / '..' / 'app')]
 
 from tornado.testing import AsyncHTTPTestCase, gen_test
 
-from app.main import TornadoApp
-from tests.foremanenvparser import ForemanEnvParser
+from main import TornadoApp
+from foremanenvparser import ForemanEnvParser
 
 
 class TornadoAppTest(AsyncHTTPTestCase):
