@@ -12,12 +12,10 @@ from tornado.options import parse_command_line
 class TornadoApp(tornado.web.Application):
     def __init__(self, env):
         debug = True
-        traceback = True
 
         if env != 'development':
             env = 'production'
             debug = False
-            traceback = False
 
         template_path = str(pathlib.Path(__file__).parent.resolve() / env / 'template')
         static_path = str(pathlib.Path(__file__).parent.resolve() / env / 'static')
@@ -28,7 +26,6 @@ class TornadoApp(tornado.web.Application):
             'cookie_secret': os.environ['TORNADO_COOKIE_SECRET'],
             'xsrf_cookies': True,
             'debug': debug,
-            'serve_traceback': traceback
         }
 
         handlers = [
