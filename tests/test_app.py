@@ -1,13 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from app.main import TornadoApp
+import os
+from test.support import EnvironmentVarGuard
+
 from tornado.testing import AsyncHTTPTestCase, gen_test
+
+from app.main import TornadoApp
+from tests.foremanenvparser import ForemanEnvParser
 
 
 class TornadoAppTest(AsyncHTTPTestCase):
     def get_app(self):
-        return TornadoApp()
+        with EnvironmentVarGuard() as env:
+            config = ForemanEnvParser('.env')
+            for env_var, value in config.env:
+                env.set(env_var.upper(), value)
+            return TornadoApp(os.environ['TORNADO_ENV'])
 
     @gen_test
     def test_app(self):
