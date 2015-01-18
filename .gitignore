@@ -57,3 +57,6 @@ target/
 /bower_components
 /npm-debug.log
 /node_modules
+
+#compass
+.sass-cache/
