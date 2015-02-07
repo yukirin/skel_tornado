@@ -8,11 +8,31 @@ html(lang="ja")
         meta(name="keywords", content="")
         meta(name="author", content="")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="icon", href="{{ static_url('img/favicon.ico') }}")
-        link(href="{{ static_url('css/materialize.min.css') }}", rel="stylesheet", media="screen,projection")
-        link(href="{{ static_url('css/app.css') }}", rel="stylesheet")
+        link(rel="icon", href="{{ static_url('favicon.ico') }}")
+        link(href="{{ static_url('css/app.css') }}", rel="stylesheet", media="screen,projection")
     body
-        script(src="{{ static_url('js/jquery.min.js') }}")
-        script(src="{{ static_url('js/materialize.min.js') }}")
-        script(src="{{ static_url('js/knockout.js') }}")
+        nav
+          div.container
+            div.nav-wrapper
+              a.brand-logo(href="/") HearthDraft
+              ul#nav-mobile.right.side-nav.share-buttons
+                li
+                  a(href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhsdraft.herokuapp.com&t=hsdraft" target="_blank")
+                    i.fa.fa-facebook.left
+                    | Facebook
+                li
+                  a(href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fhsdraft.herokuapp.com&text=hsdraft:%20http%3A%2F%2Fhsdraft.herokuapp.com" target="_blank")
+                    i.fa.fa-twitter.left
+                    | Twitter
+                li
+                  a(href="https://plus.google.com/share?url=http%3A%2F%2Fhsdraft.herokuapp.com" target="_blank")
+                    i.fa.fa-google-plus.left
+                    | Google+
+              a.button-collapse(href="#", data-activates="nav-mobile")
+                i.mdi-navigation-menu
+        footer#footer.page-footer
+          div.container
+          div.footer-copyright
+            div.container
+              span © 2014 yukirin
         script(src="{{ static_url('js/app.js') }}")

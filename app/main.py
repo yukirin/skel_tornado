@@ -11,14 +11,15 @@ from tornado.options import parse_command_line
 
 class TornadoApp(tornado.web.Application):
     def __init__(self, env):
+        self.version = os.environ['APP_VERSION']
         debug = True
 
         if env != 'development':
             env = 'production'
             debug = False
 
-        template_path = str(pathlib.Path(__file__).parent.resolve() / env / 'template')
-        static_path = str(pathlib.Path(__file__).parent.resolve() / env / 'static')
+        template_path = str(pathlib.Path(__file__).parent.resolve() / env / 'dist' / 'template')
+        static_path = str(pathlib.Path(__file__).parent.resolve() / env / 'dist' / 'static')
 
         settings = {
             'template_path': template_path,
