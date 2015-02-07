@@ -19,7 +19,8 @@
     "materialize": "./bower_components/materialize/dist/js/materialize.min.js",
     "chart": "./bower_components/chartjs/Chart.min.js",
     "footerFixed": "./app/development/static/js/footerFixed.js",
-    "jquery-easing": "./bower_components/jquery.easing/js/jquery.easing.min.js"
+    "velocity": "./bower_components/velocity/velocity.min.js",
+    "velocityUi": "./bower_components/velocity/velocity.ui.min.js"
   },
   "browserify": {
     "transform": [
@@ -34,6 +35,18 @@
       "exports": "materialize",
       "depends": [
         "jquery:jQuery"
+      ]
+    },
+    "velocity": {
+      "exports": "Velocity",
+      "depends": [
+        "jquery:jQuery"
+      ]
+    },
+    "velocityUi": {
+      "exports": "velocityUi",
+      "depends": [
+        "velocity:Velocity"
       ]
     }
   },

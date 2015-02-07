@@ -24,6 +24,6 @@
     "materialize": "*",
     "chartjs": "*",
     "fontawesome": "*",
-    "jquery.easing": "*"
+    "velocity": "*"
   }
 }

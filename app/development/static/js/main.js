@@ -2,7 +2,8 @@
 "use strict";
 
 require('jquery');
-require('jquery-easing');
+require('velocity');
+// require('velocityUi');
 require('knockout');
 // require('chart');
 require('materialize');
