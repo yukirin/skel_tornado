@@ -116,7 +116,7 @@ gulp.task('clean:production', function(cb) {
 });
 
 gulp.task('copy:production', ['clean:production'], function() {
-  return gulp.src(paths.distStaticDir + '/../**/*')
+  return gulp.src(paths.distDir + '/**/*')
     .pipe(gulp.dest(paths.productionDir))
     .pipe(filelog());
 });
