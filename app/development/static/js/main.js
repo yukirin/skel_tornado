@@ -2,6 +2,7 @@
 "use strict";
 
 require('jquery');
+require('jquery-easing');
 require('knockout');
 // require('chart');
 require('materialize');

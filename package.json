@@ -18,7 +18,8 @@
     "knockout": "./bower_components/knockoutjs/dist/knockout.js",
     "materialize": "./bower_components/materialize/dist/js/materialize.min.js",
     "chart": "./bower_components/chartjs/Chart.min.js",
-    "footerFixed": "./app/development/static/js/footerFixed.js"
+    "footerFixed": "./app/development/static/js/footerFixed.js",
+    "jquery-easing": "./bower_components/jquery.easing/js/jquery.easing.min.js"
   },
   "browserify": {
     "transform": [

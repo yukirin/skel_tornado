@@ -23,6 +23,7 @@
     "knockoutjs": "*",
     "materialize": "*",
     "chartjs": "*",
-    "fontawesome": "*"
+    "fontawesome": "*",
+    "jquery.easing": "*"
   }
 }
