@@ -46,6 +46,7 @@
     "velocityUi": {
       "exports": "velocityUi",
       "depends": [
+        "jquery:jQuery",
         "velocity:Velocity"
       ]
     }

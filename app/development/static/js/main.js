@@ -2,11 +2,11 @@
 "use strict";
 
 require('jquery');
+require('materialize');
 require('velocity');
-// require('velocityUi');
+require('velocityUi');
 require('knockout');
 // require('chart');
-require('materialize');
 require('footerFixed');
 
 //materialize sideNav
