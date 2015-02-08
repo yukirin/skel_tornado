@@ -71,6 +71,7 @@
     "gulp-notify": "*",
     "gulp-pyjade": "git://github.com/htch/gulp-pyjade.git#master",
     "gulp-cached": "*",
-    "gulp-livereload": "*"
+    "gulp-livereload": "*",
+    "with-env": "*"
   }
 }

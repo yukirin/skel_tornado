@@ -15,6 +15,7 @@ var runSequence = require('run-sequence');
 var notify = require('gulp-notify');
 var pyjade = require('gulp-pyjade');
 var livereload = require('gulp-livereload');
+require('with-env')();
 
 var paths = {
   staticDir:  './app/development/static',
@@ -25,7 +26,32 @@ var paths = {
   distTemplateDir: './app/development/dist/template'
 };
 
-
+var envOptions = {
+  development: {
+    uglify: {
+      mangle: false,
+      compress: false,
+      preserveComments: "all"
+    },
+    compass: {
+      config_file: './config.rb',
+      css: paths.distStaticDir + '/css',
+      sass: paths.staticDir + '/sass'
+    }
+  },
+  production: {
+    uglify: {
+      preserveComments: 'some'
+    },
+    compass: {
+      config_file: './config.rb',
+      css: paths.distStaticDir + '/css',
+      sass: paths.staticDir + '/sass',
+      comments: false,
+      style: 'compressed'
+    }
+  }
+};
 // gulp-starter
 // https://github.com/greypants/gulp-starter
 // Copyright 2014 Daniel Tello
@@ -79,23 +105,17 @@ gulp.task('build:js', function() {
     .on('error', handleErrors)
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(uglify({preserveComments: 'some'}))
+    .pipe(uglify(envOptions[process.env.TORNADO_ENV].uglify))
     .pipe(gulp.dest(distGlob))
     .pipe(filelog());
 });
 
 gulp.task('build:compass', function() {
   var srcGlob = paths.staticDir + '/sass/**/*.sass';
-  var distGlob = paths.distStaticDir + '/css';
-  var configPath = './config.rb';
 
   return gulp.src(srcGlob)
     .pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
-    .pipe(compass({
-      config_file: configPath,
-      css: distGlob,
-      sass: paths.staticDir + '/sass'
-    }))
+    .pipe(compass(envOptions[process.env.TORNADO_ENV].compass))
     .pipe(filelog());
 });
 
@@ -144,9 +164,9 @@ gulp.task('watch', function() {
 gulp.task('clean', ['clean:dist', 'clean:production']);
 
 gulp.task('build', function() {
-  runSequence(
-    'clean', ['build:pyjade', 'build:compass', 'build:js', 'copy:dist', 'build:image'],
-    'copy:production'
-  );
+  var sequence = ['clean', ['build:pyjade', 'build:compass', 'build:js', 'copy:dist', 'build:image']];
+  if (process.env.TORNADO_ENV == 'production') sequence.push('copy:production');
+  runSequence.apply(null, sequence);
 });
+
 gulp.task('default', ['build']);
