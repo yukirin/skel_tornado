@@ -143,8 +143,9 @@ gulp.task('copy:production', ['clean:production'], function() {
 
 gulp.task('copy:dist', function() {
   var favicon = paths.staticDir + '/favicon.ico';
+  var robots = paths.staticDir + '/robots.txt';
   var fontPath = paths.staticDir + '/font/**/*';
-  return gulp.src([favicon, fontPath], {base: paths.staticDir})
+  return gulp.src([favicon, robots, fontPath], {base: paths.staticDir})
     .pipe(changed(paths.distStaticDir))
     .pipe(gulp.dest(paths.distStaticDir))
     .pipe(filelog());
