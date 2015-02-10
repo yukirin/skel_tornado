@@ -15,6 +15,7 @@ var runSequence = require('run-sequence');
 var notify = require('gulp-notify');
 var pyjade = require('gulp-pyjade');
 var livereload = require('gulp-livereload');
+var htmlMin = require('gulp-htmlmin');
 require('with-env')();
 
 var paths = {
@@ -31,12 +32,16 @@ var envOptions = {
     uglify: {
       mangle: false,
       compress: false,
-      preserveComments: "all"
+      preserveComments: "all",
+      output: {beautify: true}
     },
     compass: {
       config_file: './config.rb',
       css: paths.distStaticDir + '/css',
       sass: paths.staticDir + '/sass'
+    },
+    htmlmin: {
+      env: 'development'
     }
   },
   production: {
@@ -49,6 +54,9 @@ var envOptions = {
       sass: paths.staticDir + '/sass',
       comments: false,
       style: 'compressed'
+    },
+    htmlmin: {
+      collapseWhitespace: true
     }
   }
 };
@@ -79,7 +87,7 @@ gulp.task('build:image', function() {
     width: 260,
     height: 370,
     gravity: 'Center',
-    crop: false,
+    crop: true,
     upscale: true,
     imageMagick: true
   };
@@ -123,6 +131,7 @@ gulp.task('build:pyjade', function() {
   return gulp.src(paths.templateDir + '/**/*.jade')
     .pipe(pyjade({engine: "tornado"}))
     .on('error', handleErrors)
+    .pipe(htmlMin(envOptions[process.env.TORNADO_ENV].htmlmin))
     .pipe(gulp.dest(paths.distTemplateDir))
     .pipe(filelog());
 });
