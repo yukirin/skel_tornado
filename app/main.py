@@ -6,12 +6,15 @@ import pathlib
 
 import tornado.ioloop
 import tornado.web
+from tornado.web import url
 from tornado.options import parse_command_line
+from motor import MotorClient
 
 
 class TornadoApp(tornado.web.Application):
     def __init__(self, env):
         self.version = os.environ['APP_VERSION']
+        db = MotorClient(os.environ['MONGOHQ_URL']).rin_stg
         debug = True
 
         if env != 'development':
@@ -27,10 +30,11 @@ class TornadoApp(tornado.web.Application):
             'cookie_secret': os.environ['TORNADO_COOKIE_SECRET'],
             'xsrf_cookies': True,
             'debug': debug,
+            'db': db
         }
 
         handlers = [
-            # (r'/', MainHandler),
+            # url(r'/', MainHandler),
         ]
         super().__init__(handlers, **settings)
 
