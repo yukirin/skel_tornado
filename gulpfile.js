@@ -21,7 +21,7 @@ require('with-env')();
 var paths = {
   staticDir:  './app/development/static',
   distStaticDir: './app/development/dist/static',
-  productionDir: './app/production',
+  productionDir: './app/production/dist',
   distDir: './app/development/dist',
   templateDir: './app/development/template',
   distTemplateDir: './app/development/dist/template'
