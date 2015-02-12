@@ -60,3 +60,7 @@ target/
 
 #compass
 .sass-cache/
+
+#tornado app
+app/development/dist/
+app/production/
