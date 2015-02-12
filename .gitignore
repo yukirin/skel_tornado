@@ -64,3 +64,6 @@ target/
 #tornado app
 app/development/dist/
 app/production/
+
+#tags
+tags
