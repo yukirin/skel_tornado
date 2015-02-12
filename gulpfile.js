@@ -21,10 +21,11 @@ require('with-env')();
 var paths = {
   staticDir:  './app/development/static',
   distStaticDir: './app/development/dist/static',
-  productionDir: './app/production/dist',
+  distProductionDir: './app/production/dist',
   distDir: './app/development/dist',
   templateDir: './app/development/template',
-  distTemplateDir: './app/development/dist/template'
+  distTemplateDir: './app/development/dist/template',
+  productionDir: './app/production'
 };
 
 var envOptions = {
@@ -146,7 +147,7 @@ gulp.task('clean:production', function(cb) {
 
 gulp.task('copy:production', ['clean:production'], function() {
   return gulp.src(paths.distDir + '/**/*')
-    .pipe(gulp.dest(paths.productionDir))
+    .pipe(gulp.dest(paths.distProductionDir))
     .pipe(filelog());
 });
 
