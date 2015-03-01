@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import os
 import pathlib
 from test.support import EnvironmentVarGuard
 
@@ -21,7 +20,7 @@ class TornadoAppTest(AsyncHTTPTestCase):
             config = ForemanEnvParser('.env')
             for env_var, value in config.env:
                 env.set(env_var.upper(), value)
-            return TornadoApp(os.environ['TORNADO_ENV'])
+            return TornadoApp()
 
     @gen_test
     def test_app(self):
