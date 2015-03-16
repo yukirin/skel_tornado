@@ -3,10 +3,10 @@ html(lang="ja")
     head
         meta(charset="utf-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        title
+        title TornadoApp
         meta(name="description", content="")
         meta(name="keywords", content="")
-        meta(name="author", content="")
+        meta(name="author", content="yukirin")
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
         link(rel="icon", href="{{ static_url('favicon.ico') }}")
         link(href="{{ static_url('css/app.css') }}", rel="stylesheet", media="screen,projection")
@@ -15,23 +15,35 @@ html(lang="ja")
           div.container
             div.nav-wrapper
               a.brand-logo(href="/") TornadoApp
-              ul#nav-mobile.right.side-nav
+              a.button-collapse(href="#", data-activates="nav-mobile")
+                i.mdi-navigation-menu
+              ul.right.hide-on-med-and-down
                 li
-                  a(href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhsdraft.herokuapp.com&t=hsdraft" target="_blank")
+                  a(href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftornado.herokuapp.com&t=tornado" target="_blank")
                     i.fa.fa-facebook.left
                     | Facebook
                 li
-                  a(href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fhsdraft.herokuapp.com&text=hsdraft:%20http%3A%2F%2Fhsdraft.herokuapp.com" target="_blank")
+                  a(href="https://twitter.com/intent/tweet?source=http%3A%2F%2Ftornado.herokuapp.com&text=tornado:%20http%3A%2F%2Ftornado.herokuapp.com" target="_blank")
                     i.fa.fa-twitter.left
                     | Twitter
                 li
-                  a(href="https://plus.google.com/share?url=http%3A%2F%2Fhsdraft.herokuapp.com" target="_blank")
+                  a(href="https://plus.google.com/share?url=http%3A%2F%2Ftornado.herokuapp.com" target="_blank")
                     i.fa.fa-google-plus.left
                     | Google+
-              a.button-collapse(href="#", data-activates="nav-mobile")
-                i.mdi-navigation-menu
+              ul#nav-mobile.side-nav
+                li
+                  a(href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftornado.herokuapp.com&t=tornado" target="_blank")
+                    i.fa.fa-facebook.fa-fw
+                    | Facebook
+                li
+                  a(href="https://twitter.com/intent/tweet?source=http%3A%2F%2Ftornado.herokuapp.com&text=tornado:%20http%3A%2F%2Ftornado.herokuapp.com" target="_blank")
+                    i.fa.fa-twitter.fa-fw
+                    | Twitter
+                li
+                  a(href="https://plus.google.com/share?url=http%3A%2F%2Ftornado.herokuapp.com" target="_blank")
+                    i.fa.fa-google-plus.fa-fw
+                    | Google+
         footer#footer.page-footer
-          div.container
           div.footer-copyright
             div.container
               span © 2015 yukirin
