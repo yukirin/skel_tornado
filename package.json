@@ -20,7 +20,8 @@
     "chart": "./bower_components/chartjs/Chart.min.js",
     "footerFixed": "./app/development/static/js/footerFixed.js",
     "velocity": "./bower_components/velocity/velocity.min.js",
-    "velocityUi": "./bower_components/velocity/velocity.ui.min.js"
+    "velocityUi": "./bower_components/velocity/velocity.ui.min.js",
+    "isjs": "./bower_components/is_js/is.min.js"
   },
   "browserify": {
     "transform": [
@@ -28,6 +29,7 @@
     ]
   },
   "browserify-shim": {
+    "isjs": "is",
     "jquery": "$",
     "knockout": "ko",
     "chart": "Chart",
