@@ -7,7 +7,7 @@ import pathlib
 from motor import MotorClient
 
 
-def init_settings():
+def init():
     env = os.environ['TORNADO_ENV']
     cookie_secret = os.environ['TORNADO_COOKIE_SECRET']
     version = os.environ['APP_VERSION']
