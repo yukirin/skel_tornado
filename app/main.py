@@ -16,7 +16,7 @@ class TornadoApp(tornado.web.Application):
         handlers = [
             # url(r'/', MainHandler),
         ]
-        app_settings = settings.init_settings()
+        app_settings = settings.init()
         super().__init__(handlers, **app_settings)
 
 
